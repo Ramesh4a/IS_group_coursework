@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <i class="fas fa-times exit-icon" onclick="redirectToHome()"></i>
+            <h1>Login</h1><br>
+            <form id="loginForm" class="form">
+                <label for="name" style="font-size: 27px;">Username:</label>
+                <input type="text" id="name" required>
+                <label for="password" style="font-size: 27px;">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Login</button>
+            </form><br>
+            <p style="font-size: 27px;">Don't have an account? <a href="registration.html">Register here</a></p>
+        </div>
+    </div>
+    <div id="myPopup">
+        <p style="font-size: 36px;">Login successful!</p>
+        <button onclick="redirectToDashboard()">Go to Products Now</button>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('myPopup').style.display = 'block';
+        }
+
+        function redirectToDashboard() {
+            window.location.href = "product.html";
+        }
+
+        function redirectToHome() {
+            window.location.href = "/";
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Check the login form fields
+            var username = document.getElementById('name').value;
+            var password = document.getElementById('password').value;
+
+            // Perform validation checks here if needed
+
+            // Display the popup on successful login
+            showPopup();
+        });
+    </script>
+</body>
+
+</html>

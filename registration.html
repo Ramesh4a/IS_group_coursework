@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            background-image: url(/images/1bg.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            backdrop-filter: blur(20px);
+            padding: 45px 60px 60px 60px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+        }
+
+        .form input {
+            display: block;
+            width: 90%;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+        }
+
+        .form button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .form-container a {
+            text-decoration: none;
+            font-size: 22px;
+            color: #007bff;
+        }
+
+        .form-container a:hover {
+            color: #007bff
+        }
+
+        #myPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #myPopup p {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        #myPopup button {
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .exit-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <i class="fas fa-times exit-icon" onclick="redirectToHome()"></i>
+            <h1>Registration</h1><br>
+            <form id="registrationForm" class="form">
+                <label for="name" style="font-size: 27px;">Username:</label>
+                <input type="text" id="name" required>
+                <label for="email" style="font-size: 27px;">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password" style="font-size: 27px;">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Register</button>
+            </form><br>
+            <p style="font-size: 27px;">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+    <div id="myPopup">
+        <p style="font-size: 36px;">Registration successful!</p>
+        <p style="font-size: 27px;">Now you can login.</p>
+        <button onclick="redirectToLogin()">Login Now</button>
+    </div>
+
+    <script>
+//         function showPopup() {
+//             document.getElementById('myPopup').style.display = 'block';
+//         }
+
+//         function redirectToLogin() {
+//             window.location.href = "login.html";
+//         }
+
+//         function redirectToHome() {
+//             window.location.href = "/";
+//         }
+
+//         document.getElementById('registrationForm').addEventListener('submit', function (event) {
+//             event.preventDefault();
+//             // Check the registration form fields
+//             var username = document.getElementById('name').value;
+//             var email = document.getElementById('email').value;
+//             var password = document.getElementById('password').value;
+
+//             //Perform validation checks here if needed
+
+// // Display the popup on successful registration
+// showPopup();
+// });
+
+function registerUser(event) {
+    debugger
+    event.preventDefault();
+
+    // Get form values
+    var username = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    // Save registration data to localStorage
+    var userData = {
+        username: username,
+        email: email,
+        password: password
+    };
+    localStorage.setItem('userData', JSON.stringify(userData));
+
+    // Show registration success popup
+    document.getElementById('myPopup').style.display = 'block';
+}
+
+function redirectToLogin() {
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+function redirectToHome() {
+    // Redirect to home page
+    window.location.href = 'index.html';
+}
+</script>
+</body>
+
+</html>
